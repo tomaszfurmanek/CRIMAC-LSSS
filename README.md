@@ -19,11 +19,11 @@ Coordinates:
   * category    (category) <U4 '-1' '1' '27' '6009' '-1.0'
   * ping_time   (ping_time) datetime64[ns] 2019-05-07T19:08:06.188000 ... 201...
   * range       (range) float64 -0.19 0.0 0.19 0.3799 ... 499.6 499.8 500.0
-  * 
+  
 Data variables:
 
-    annotation  (category, ping_time, range) float64 dask.array<chunksize=(1, 20000, 2634), meta=np.ndarray>
-    object      (ping_time, range) <U1 dask.array<chunksize=(20000, 2634), meta=np.ndarray>
+   annotation  (category, ping_time, range) float64 dask.array<chunksize=(1, 20000, 2634), meta=np.ndarray>
+   object      (ping_time, range) <U1 dask.array<chunksize=(20000, 2634), meta=np.ndarray>
 
 
 python writeannotzarr.py -shipID 847 -rawfile S2019847.zarr -parquet S2019847_work.parquet -savefile S2019847_work_annot2.zarr -pings 20000
