@@ -43,17 +43,22 @@ def write_annot(rawzarrfile,start,end,rangeend,savefile,writemode ):
     print(data_ping[len(data_ping)-1])
 
     rawpinglist = np.asarray(data_ping)
-
+    
+    # annotation is saved in lsss_tmp numpy array
     lsss_tmp = np.empty([len(category),len(data_ping), len(data_range)] )
+    # annotation object IDs are saved in lsssobject_tmp numpy array
     lsssobject_tmp = np.empty([len(data_ping), len(data_range)], dtype=str)
 
     pingnum = 0
     hits = 0
-
+    
+    # loop through all pings in raw data zarr
     for pingx in rawpinglist:
         p3 = str(pingx).replace('T', ' ')[0:26]
 
         rows=[]
+        # Check if ping in raw data has annotation in parquet data. 
+        # If there is data for a ping, get it in a list of rows and delete it from the parquet dictionary
         if p3 in work:
             rows=work[p3]
             hits=hits+1
@@ -72,7 +77,8 @@ def write_annot(rawzarrfile,start,end,rangeend,savefile,writemode ):
             end=int(lo2 + 5)
             if end >= len(data_range):
                 end=len(data_range);
-
+                
+            #Setting all values between 'mask_depth_upper' and 'mask_depth_lower' to 'proportion' for each 'acoustic_category' layer
             while rangepos < end:
                 if float(data_range[rangepos]) > float(row['mask_depth_upper']) and float(data_range[rangepos]) < float(row['mask_depth_lower']):
                     if pingnum > -1:
@@ -85,6 +91,7 @@ def write_annot(rawzarrfile,start,end,rangeend,savefile,writemode ):
                 rangepos += 1
         pingnum = pingnum + 1
 
+    # Saving numpy arrays as XArray Dask arrays
     lsss_dask = dask.from_array(lsss_tmp, chunks=(-1,-1,15))
     lsss = xr.DataArray(name="lsss", data=lsss_dask,
                         dims=['category','ping_time', 'range'],
@@ -103,15 +110,22 @@ def write_annot(rawzarrfile,start,end,rangeend,savefile,writemode ):
             range=data_range,
         )
     )
+    #chunks are set to full range and pingchunk for pings
     ds4 = ds4.chunk({"category": 1, "range": ds4.range.shape[0], "ping_time": pingchunk})
     compressor = Blosc(cname='zstd', clevel=3, shuffle=Blosc.BITSHUFFLE)
     encoding = {var: {"compressor": compressor} for var in ds4.data_vars}
 
     if writemode==0:
+        # write first chunk to zarr
         ds4.to_zarr(savefile, mode="w", encoding=encoding)
     else:
+        # append chunk to zarr
         ds4.to_zarr(savefile, mode="a",   append_dim="ping_time")
 
+        
+# ------------------------------------------       
+# Read parquet file with annotation into a dictionary with the ping as key. Each ping key contains an list of annotations for that ping
+# ------------------------------------------ 
 table1 = pq.read_table( parquetfile2)
 t1 = table1.to_pandas()
 
@@ -133,6 +147,9 @@ category=[]
 for key1 in acoustic_category:
     category.append(key1)
 
+# ------------------------------------------       
+# Read zarr in slices and create zarr annotation for each slice
+# ------------------------------------------ 
 z = xr.open_zarr(rawfile, chunks={'ping_time':'50000'})
 
 totalpings = z.sv.shape[1]
