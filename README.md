@@ -26,4 +26,7 @@ Data variables:
    object      (ping_time, range) <U1 dask.array<chunksize=(20000, 2634), meta=np.ndarray>
 
 
+
+Commandline parameters:
+
 python writeannotzarr.py -shipID 847 -rawfile S2019847.zarr -parquet S2019847_work.parquet -savefile S2019847_work_annot2.zarr -pings 20000
