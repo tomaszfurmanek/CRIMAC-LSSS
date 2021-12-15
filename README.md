@@ -9,7 +9,7 @@ Script is setting all values between 'mask_depth_upper' and 'mask_depth_lower' t
 Object array saves shipID and ObjectID form annotation
 
 Example of created zarr:
-
+----------------------------------------
 <xarray.Dataset>
 
 Dimensions:     (category: 5, ping_time: 3986452, range: 2634)
@@ -24,7 +24,7 @@ Data variables:
 
    annotation  (category, ping_time, range) float64 dask.array<chunksize=(1, 20000, 2634), meta=np.ndarray>
    object      (ping_time, range) <U1 dask.array<chunksize=(20000, 2634), meta=np.ndarray>
-
+----------------------------------------
 
 
 Commandline parameters:
