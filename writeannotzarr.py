@@ -7,6 +7,9 @@ import dask.array as dask
 
 import sys
 
+# ----------------------------
+# Script makes an annotation file in zarr format from annotation parquet file and zarr raw data
+# ----------------------------
 
 shipID="847"
 rawfile = '/Users/tf/work/crimac/2019/S2019847.zarr'
