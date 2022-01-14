@@ -29,4 +29,12 @@ ________________________
 
 Commandline parameters:
 
-python writeannotzarr.py -shipID 847 -rawfile S2019847.zarr -parquet S2019847_work.parquet -savefile S2019847_work_annot2.zarr -pings 20000
+```
+python writeannot.py -shipID 847 -rawfile S2019847.zarr -parquet S2019847_work.parquet -savefile S2019847_work_annot2.zarr -pings 20000
+```
+
+to run on pallas.hi.no activate the crimac conda environment
+```
+source /localscratch_hdd/tomasz/anaconda3/
+conda activate crimac
+```
