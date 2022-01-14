@@ -1,3 +1,9 @@
+#example of how not to do it as numpy arrays are extremely slow for editing one cell in an arrays 
+
+
+
+
+
 import xarray as xr
 import math
 import numpy as np
