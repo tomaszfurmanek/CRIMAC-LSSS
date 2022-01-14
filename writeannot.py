@@ -14,11 +14,6 @@ import sys
 #  source /localscratch_hdd/tomasz/anaconda3/
 #  conda activate crimac
 
-rawfile5 = '/Users/tf/work/crimac/test/S2019842_PVENDLA_work_annot.zarr'
-z = xr.open_zarr(rawfile5, chunks={'ping_time':'50000'})
-
-
-print (z)
 
 
 shipID="847"
