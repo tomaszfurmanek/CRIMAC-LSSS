@@ -72,12 +72,11 @@ Add Channel dimension or layer , as annotation can be linked to layers
 Add array with index position of the data range in the raw data . Each ping will have a value of where the data ends in the range dimension
 
 Optional rules for objecttype
-objecttype now dhas info if the position is layer or schoolbox.
+objecttype now has information if the coordinate is part of alayer or a schoolbox.
+Currently the objecttype uses 3 for layer and 2 for schoolbox , this is the same as Priority variable in the work files
 - Layer (2)
 - Schoolbox(1)
 - other (0)
-
-Currently the objecttype uses 3 for layer and 2 for schoolbox like Priority variable in the work files
 
  
 Optional changes for  'object'
