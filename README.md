@@ -76,6 +76,7 @@ objecttype now dhas info if the position is layer or schoolbox.
 - Layer (2)
 - Schoolbox(1)
 - other (0)
+
 Currently the objecttype uses 3 for layer and 2 for schoolbox like Priority variable in the work files
 
  
