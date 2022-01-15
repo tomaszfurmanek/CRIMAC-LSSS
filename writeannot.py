@@ -69,7 +69,7 @@ def write_annot(rawzarrfile,start,end,rangeend,savefile,writemode ):
 
         # Start with priority 3 : layers
         # then priority 2 boxes
-        # in the end overite alle category layers with exclude priority 1
+        # in the end overite all category layers with exclude priority 1
         # workannot dictionaries are in the above order
         type=3
         for work in workannot:
