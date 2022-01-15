@@ -63,6 +63,8 @@ ________________________
 | Background                | 0        |  0     |  0.              |
 | Exclude                   | 0        |  -1.   | NaN              |  
 
+Should bubbles annotation be in its own layer? how is this labeled today in the work files?
+
 TODO:
 
 Add Channel dimension or layer , as annotation can be linked to layers
