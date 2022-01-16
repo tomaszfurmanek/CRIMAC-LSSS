@@ -54,14 +54,14 @@ conda activate crimac
 ________________________
 
 
-| Examples                  |objecttype| object | annotation layers|
-| -------------             |--------  | ------ |     ----         |
-| Sandeel (school)          | 1        |  1     |  1.0             |
-| Herring (school)          | 1        |  2     |  1.0             |
-| Mix herring/other (layer) | 1        |  2     |  0.7 / 0.3       |
-| Bubbles (layer)           | 1        |  2     |  1.0             |
-| Background                | 0        |  0     |  0.              |
-| Exclude                   | 0        |  -1.   | NaN              |  
+| Examples                  |objecttype| object | annotation layers:| 27 sandeel | 12 herring | 1 other | bubbles | 
+| -------------             |--------  | ------ |     ----          |    ---     |    ---     |   ---   |   ---   |
+| Sandeel (school)          | 1        |   1    |                   |  1.0       |     0.0    |   0.0   |   0.0   |
+| Herring (school)          | 1        |   2    |                   |  0.0       |     1.0    |   0.0   |   0.0   |
+| Mix herring/other (layer) | 1        |   2    |                   |  0.0       |     0.7    |   0.3   |   0.0   |
+| Bubbles (layer)           | 1        |   2    |                   |  0.0       |     0.0    |   0.0   |   1.0   |
+| Background                | 0        |   0    |                   |  0.0       |     0.0    |   0.0   |   0.0   |
+| Exclude                   | 0        |  -1    |                   |  NaN       |     NaN    |   NaN   |   NaN   |
 
 Should bubbles annotation be in its own layer? how is this labeled today in the work files?
 
