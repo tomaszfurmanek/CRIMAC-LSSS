@@ -211,7 +211,7 @@ print(t1)
 pcount=0
 for index, row in t1.iterrows():
     pcount=pcount+1
-    c1 = int(row['acoustic_category'])
+    c1 = int(float(row['acoustic_category']))
     p1 = int(row['priority'])
     #put all annotations in a list and save the list in the dictionary for each pingtime key
     if c1 > 0 or c1 == -1:
@@ -238,7 +238,7 @@ for index, row in t1.iterrows():
 category=[]
 # we want to save each category as an int value
 for key1 in acoustic_category:
-    category.append(int(key1))
+    category.append(int(float(key1)))
 print(category)
 print(acoustic_category)
 
