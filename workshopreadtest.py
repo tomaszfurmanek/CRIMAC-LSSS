@@ -71,15 +71,15 @@ for row in csvreader:
             y2 = range
 
         fig, axs = plt.subplots(nrows=2, ncols=4)
-        axs[0, 0].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(0, 1), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0], cmap='hot')
-        axs[0, 1].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(1, 2), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0], cmap='hot')
-        axs[0, 2].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(2, 3), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0], cmap='hot')
-        axs[1, 0].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(3, 4), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0], cmap='hot')
-        axs[1, 1].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(4, 5), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0], cmap='hot')
-        axs[1, 2].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(5, 6), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0], cmap='hot')
+        axs[0, 0].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(0, 1), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0].T, cmap='hot')
+        axs[0, 1].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(1, 2), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0].T, cmap='hot')
+        axs[0, 2].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(2, 3), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0].T, cmap='hot')
+        axs[1, 0].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(3, 4), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0].T, cmap='hot')
+        axs[1, 1].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(4, 5), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0].T, cmap='hot')
+        axs[1, 2].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(5, 6), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0].T, cmap='hot')
 
-        axs[0, 3].imshow(10 * (zarr_pred.annotation.isel(category=slice(3, 4), ping_time=slice(x1, x2), range=slice(y1, y2 )))[0],cmap='hot')
-        axs[1, 3].imshow(10 * (zarr_pred.annotation.isel(category=slice(3, 4), ping_time=slice(x1, x2), range=slice(y1, y2 )))[0],cmap='hot')
+        axs[0, 3].imshow(10 * (zarr_pred.annotation.isel(category=slice(3, 4), ping_time=slice(x1, x2), range=slice(y1, y2 )))[0].T,cmap='hot')
+        axs[1, 3].imshow(10 * (zarr_pred.annotation.isel(category=slice(3, 4), ping_time=slice(x1, x2), range=slice(y1, y2 )))[0].T,cmap='hot')
 
         # axs[1].set_ylabel('$y_{mf,auto,red}$')
         # axs[1].set_xlabel('Range (m)')
