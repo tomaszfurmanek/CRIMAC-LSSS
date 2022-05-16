@@ -51,10 +51,12 @@ for row in csvreader:
     if(row[3]=="27"):
         print(row[0]+" "+row[3]+" "+row[7]+" "+row[8]+" "+row[11]+" "+row[12])
         #data_sv = zarr_grid.sv.isel(frequency=slice(0, 1), ping_time=slice(int(row[7]), int(row[8])), range=slice(int(row[11]), int(row[12])))
-        data_annot = zarr_pred.annotation.isel(category=slice(3, 4), ping_time=slice(int(row[7]), int(row[8])), range=slice(int(row[11]), int(row[12])))
+        #data_annot = zarr_pred.annotation.isel(category=slice(3, 4), ping_time=slice(int(row[7]), int(row[8])), range=slice(int(row[11]), int(row[12])))
         #print(data_sv)
         #print(data_annot)
+
         extrapixels=10
+        
         x1=int(row[7])-extrapixels
         x2=int(row[8])+extrapixels
         y1=int(row[11])-extrapixels
@@ -77,17 +79,14 @@ for row in csvreader:
         axs[1, 2].imshow(10 * np.log10(zarr_grid.sv.isel(frequency=slice(5, 6), ping_time=slice(x1, x2), range=slice(y1,y2)) )[0], cmap='hot')
 
         axs[0, 3].imshow(10 * (zarr_pred.annotation.isel(category=slice(3, 4), ping_time=slice(x1, x2), range=slice(y1, y2 )))[0],cmap='hot')
-
         axs[1, 3].imshow(10 * (zarr_pred.annotation.isel(category=slice(3, 4), ping_time=slice(x1, x2), range=slice(y1, y2 )))[0],cmap='hot')
 
         # axs[1].set_ylabel('$y_{mf,auto,red}$')
-
         # axs[1].set_xlabel('Range (m)')
-
         #plt.show()
         plt.savefig(imgsave+"_"+row[0]+'sv.png', dpi=300)
         plt.close()
 
 file.close()
 
-#data1 = zarr_grid.sv.isel(frequency=slice(0, 1), ping_time=slice(0, 3000), range=slice(0,range))
+
