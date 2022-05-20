@@ -328,7 +328,7 @@ for index, row in t1.iterrows():
             row2.append(idarray[0])
             row2.append(idarray[1])
             row2.append(firstrow['acoustic_category'])
-            row2.append(1)
+            row2.append(firstrow['proportion'])
             if(lastrow['ping_time']>firstrow['ping_time']):
                 row2.append(firstrow['ping_time'])
                 row2.append(lastrow['ping_time'])
@@ -377,7 +377,7 @@ idarray=firstrow['object_id'].split("__")
 row2.append(idarray[0])
 row2.append(idarray[1])
 row2.append(firstrow['acoustic_category'])
-row2.append(1)
+row2.append(firstrow['proportion'])
 if(lastrow['ping_time']>firstrow['ping_time']):
     row2.append(firstrow['ping_time'])
     row2.append(lastrow['ping_time'])
@@ -455,10 +455,10 @@ csvheader =[
 "endping",
 "startpingindex",
 "endpingindex",
-"upperdept",
-"lowerdept",
-"upperdeptindex",
-"lowerdeptindex"
+"upperdepth",
+"lowerdepth",
+"upperdepthindex",
+"lowerdepthindex"
 
 
 ]
